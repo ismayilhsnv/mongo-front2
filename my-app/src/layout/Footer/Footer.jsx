@@ -10,13 +10,13 @@ const Footer = () => {
                 <i class="fa-brands fa-facebook-f"></i>
             </div>
             <div className='icon-t'>
-                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-twitter "></i>
             </div>
             <div className='icon-p'>
                 <i class="fa-brands fa-pinterest"></i>
             </div>
             <div className='icon-s'>
-                <i class="fa-brands fa-skype"></i>
+                <i class="fa-brands fa-skype"> </i>
             </div>
             <div className='icon-i'>
                 <i class="fa-brands fa-linkedin"></i>
