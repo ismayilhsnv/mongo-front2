@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.addToWishList{
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+}
+.addToWishList:hover{
+    background-color: red;
+    color: white;
+    transition: 1s  ;
+}

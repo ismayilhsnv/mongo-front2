@@ -2,19 +2,20 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
 import Maincontext from '../context/context';
+import "./Card.css"
 
 const Card = ({ item }) => {
-  const { addToWishList } = useContext(Maincontext)
+  const { addToFavorites } = useContext(Maincontext)
   return (
     <>
       <div style={{ marginTop: "30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", marginBottom: "30px" }}>
+        <img src={item.image} alt="" style={{ width: "350px", height: "320px", marginTop: "10px" }} />
         <span style={{ marginTop: "10px" }}>{item.desc}</span>
-        <img src={item.image} alt="" style={{ width: "400px", height: "300px", marginTop: "10px" }} />
         <span style={{ marginTop: "10px" }}>{item.price}</span>
-        <button onClick={() => {
-          addToWishList(item)
+        <button className='addToWishList' onClick={() => {
+          addToFavorites(item._id)
         }}>Add To Wishlist</button>
-        <Link to={`/${item._id}`}>Detail</Link>
+        <Link className='addToDetail' to={`/${item._id}`} style={{textDecoration:"none",color:"black", marginTop:"10px",fontWeight:"700"}}>Detail</Link>
         <Toaster />
       </div>
     </>

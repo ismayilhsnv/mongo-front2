@@ -6,16 +6,39 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home/Home';
 import axios from "axios"
 import Maincontext from './context/context';
+import toast from 'react-hot-toast';
 
 const router = createBrowserRouter(Routes)
 function App() {
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
-  const [wishListItems, setWishListItems] = useState(localStorage.getItem("wishlistItems" ? JSON.parse(localStorage.getItem("wishlistItems")) : []))
+  const [favorites, setFavorites] = useState(
+    localStorage.getItem('favorites')
+      ? JSON.parse(localStorage.getItem('favorites'))
+      : []
+  );
+
+  const addToFavorites = (id) => {
+    let item = product.find((item) => item._id === id);
+  
+    const storedFavorites = localStorage.getItem('favorites')
+      ? JSON.parse(localStorage.getItem('favorites'))
+      : [];
+  
+    if (!storedFavorites.find((favItem) => favItem._id === id)) {
+      const updatedFavorites = [...storedFavorites, item];
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  
+      toast.success(' Fovoritesə əlavə olundu');
+    } else {
+      toast.error("item movcuddur")
+    }
+  };
 
   useEffect(() => {
-    axios.get("http://localhost:8082/products/").then(res => {
+    axios.get("http://localhost:8082/products").then(res => {
       console.log(res.data);
       setProduct(res.data)
       setLoading(false)
@@ -25,29 +48,12 @@ function App() {
     })
   }, [])
 
-  const deletedWishList = (id) => {
-    const target = wishListItems.find(item => item._id === id)
-    wishListItems.splice(wishListItems.indexOf(target), 1)
-    localStorage.setItem("wishlistItem", JSON.stringify([...wishListItems, target]))
-  }
-
-  const addToWishList = (item) => {
-    const target = wishListItems.find(wishListItems => wishListItems._id === item._id)
-    if (target) {
-      console.error("item movcuddur");
-    }
-    else {
-      setWishListItems([...wishListItems])
-      localStorage.setItem("wishlistItem", JSON.stringify([...wishListItems, item]))
-    }
-  }
-
   const datas = {
     product, setProduct,
     loading, setLoading,
     error, setError,
-    wishListItems, setWishListItems,
-    addToWishList, deletedWishList
+    favorites,setFavorites,
+    addToFavorites
   }
   return (
     <>
