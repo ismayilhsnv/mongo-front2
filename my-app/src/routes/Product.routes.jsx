@@ -13,7 +13,7 @@ const Routes=[{
         path:'Wishlist',
         element:<Wishlist/>
     },{
-        path:'/:id',
+        path:'/:_id',
         element:<Detail/>
     }]
 }]

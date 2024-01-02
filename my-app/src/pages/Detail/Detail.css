@@ -1,0 +1,25 @@
+.details {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 92.5vh;
+    color: black;
+    font-weight: 900;
+    font-size: 19px;
+}
+
+.details img {
+    width: 550px;
+    height: 400px;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin-left: 20px;
+}
