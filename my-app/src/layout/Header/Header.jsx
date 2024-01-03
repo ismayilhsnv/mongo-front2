@@ -19,6 +19,7 @@ const Header = () => {
         <ul className='header__links'>
           <li><Link style={{ textDecoration: "none", color: "black" }} to="/">Home</Link></li>
           <li><Link style={{ textDecoration: "none", color: "black" }} to="Wishlist">Wishlist</Link></li>
+          <li><Link style={{ textDecoration: "none", color: "black" }} to="AddProduct">AddProduct</Link></li>
         </ul>
       </div>
 

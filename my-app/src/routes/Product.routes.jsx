@@ -1,3 +1,4 @@
+import AddProduct from "../pages/AddProduct/AddProduct";
 import Detail from "../pages/Detail/Detail";
 import Home from "../pages/Home/Home";
 import SiteRoot from "../pages/SiteRoot";
@@ -15,6 +16,11 @@ const Routes=[{
     },{
         path:'/:_id',
         element:<Detail/>
-    }]
+    },
+    {
+        path:"AddProduct",
+        element:<AddProduct/>
+    }
+]
 }]
 export default Routes

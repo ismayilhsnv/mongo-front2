@@ -19,23 +19,26 @@ function App() {
       : []
   );
 
+
+
   const addToFavorites = (id) => {
     let item = product.find((item) => item._id === id);
-  
+
     const storedFavorites = localStorage.getItem('favorites')
       ? JSON.parse(localStorage.getItem('favorites'))
       : [];
-  
+
     if (!storedFavorites.find((favItem) => favItem._id === id)) {
       const updatedFavorites = [...storedFavorites, item];
       setFavorites(updatedFavorites);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-  
+
       toast.success(' Fovoritesə əlavə olundu');
     } else {
       toast.error("item movcuddur")
     }
   };
+
 
   useEffect(() => {
     axios.get("http://localhost:8082/products").then(res => {
@@ -52,7 +55,7 @@ function App() {
     product, setProduct,
     loading, setLoading,
     error, setError,
-    favorites,setFavorites,
+    favorites, setFavorites,
     addToFavorites
   }
   return (
